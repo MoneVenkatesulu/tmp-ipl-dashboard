@@ -1,6 +1,8 @@
 // Write your code here
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
+import {PieChart, Pie, Cell, Legend} from 'recharts'
 
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
@@ -8,7 +10,10 @@ import MatchCard from '../MatchCard'
 import './index.css'
 
 class TeamMatches extends Component {
-  state = {teamMatches: [], isLoading: true}
+  state = {
+    teamMatches: [],
+    isLoading: true,
+  }
 
   componentDidMount() {
     this.getTeamDetails()
@@ -39,20 +44,30 @@ class TeamMatches extends Component {
   render() {
     const {teamMatches, isLoading} = this.state
 
-    return isLoading ? (
-      <div className="loader-container" testid="loader">
-        <Loader type="Oval" color="#ffffff" height={50} width={50} />
-      </div>
-    ) : (
+    if (isLoading) {
+      return (
+        <div className="loader-container" data-testid="loader">
+          <Loader type="Oval" color="#ffffff" height={50} width={50} />
+        </div>
+      )
+    }
+
+    return (
       <div className="team-matches-container">
+        <Link to="/" className="team-matches-back-link">
+          Back
+        </Link>
+
         <img
           src={teamMatches.teamBannerUrl}
           alt="team banner"
           className="team-banner"
         />
 
-        <h1 className="letest-mathc-text">Latest Matches</h1>
-        <LatestMatch teamMatches={teamMatches} />
+        <div>
+          <h1 className="letest-mathc-text">Latest Matches</h1>
+          <LatestMatch teamMatches={teamMatches} />
+        </div>
 
         <ul className="recent-matches-list">
           {teamMatches.recentMatchesList.map(eachMatch => (
