@@ -1,0 +1,23 @@
+/* Write your CSS here */
+.team-matches-container {
+  background-color: red;
+  padding: 10px;
+}
+
+.team-banner {
+  width: 100%;
+}
+
+.letest-mathc-text {
+  color: #ffffff;
+}
+
+.recent-matches-list {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

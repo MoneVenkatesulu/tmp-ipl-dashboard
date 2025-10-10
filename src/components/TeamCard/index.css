@@ -1,0 +1,45 @@
+/* Write your CSS here */
+
+.list-item {
+  width: 46%;
+  margin: 5px;
+  background-color: #ffffff33;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.team-card {
+  width: 100%;
+  max-width: 400px;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+}
+
+.team-img {
+  width: 30%;
+  height: 90%;
+}
+
+.team-name {
+  color: #ffffff;
+  width: 60%;
+}
+
+@media (min-width: 768px) {
+  .team-card {
+    height: 200px;
+  }
+
+  .team-img {
+    width: 48%;
+  }
+
+  .team-name {
+    width: 48%;
+    font-size: 30px;
+  }
+}

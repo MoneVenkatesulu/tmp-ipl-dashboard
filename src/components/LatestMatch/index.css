@@ -1,0 +1,49 @@
+/* Write your CSS here */
+
+.latest-match-details-container {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+.own-team-details-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #5755a7;
+}
+
+.innings-container {
+  padding: 10px;
+}
+
+.competing-team-logo {
+  width: 20%;
+}
+
+.latest-match-text {
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .latest-match-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .own-team-details-container {
+    width: 60%;
+    border: none;
+  }
+
+  .competing-team-logo {
+    width: 40%;
+  }
+
+  .innings-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+}

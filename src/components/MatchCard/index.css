@@ -1,0 +1,37 @@
+/* Write your CSS here */
+.match-card-container {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 48%;
+  height: 300px;
+  margin: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.matchDetails-logo {
+  width: 70px;
+  height: 100px;
+}
+
+.match-card-text {
+  color: #ffffff;
+}
+
+.text-green {
+  color: #18ed66;
+}
+
+.text-red {
+  color: #e31a1a;
+}
+
+@media (min-width: 768px) {
+  .match-card-container {
+    width: 31%;
+  }
+}

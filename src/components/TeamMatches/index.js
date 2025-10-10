@@ -1,0 +1,67 @@
+// Write your code here
+import {Component} from 'react'
+import Loader from 'react-loader-spinner'
+
+import LatestMatch from '../LatestMatch'
+import MatchCard from '../MatchCard'
+
+import './index.css'
+
+class TeamMatches extends Component {
+  state = {teamMatches: [], isLoading: true}
+
+  componentDidMount() {
+    this.getTeamDetails()
+  }
+
+  getTeamDetails = async () => {
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+    const response = await fetch(`https://apis.ccbp.in/ipl/${id}`)
+    const data = await response.json()
+    const dataList = {
+      teamBannerUrl: data.team_banner_url,
+      date: data.latest_match_details.date,
+      venue: data.latest_match_details.venue,
+      result: data.latest_match_details.result,
+      competingTeamLogo: data.latest_match_details.competing_team_logo,
+      competingTeam: data.latest_match_details.competing_team,
+      firstInnings: data.latest_match_details.first_innings,
+      secondInnings: data.latest_match_details.second_innings,
+      manOfTheMatch: data.latest_match_details.man_of_the_match,
+      umpires: data.latest_match_details.umpires,
+      recentMatchesList: data.recent_matches,
+    }
+    this.setState({teamMatches: dataList, isLoading: false})
+  }
+
+  render() {
+    const {teamMatches, isLoading} = this.state
+
+    return isLoading ? (
+      <div className="loader-container" testid="loader">
+        <Loader type="Oval" color="#ffffff" height={50} width={50} />
+      </div>
+    ) : (
+      <div className="team-matches-container">
+        <img
+          src={teamMatches.teamBannerUrl}
+          alt="team banner"
+          className="team-banner"
+        />
+
+        <h1 className="letest-mathc-text">Latest Matches</h1>
+        <LatestMatch teamMatches={teamMatches} />
+
+        <ul className="recent-matches-list">
+          {teamMatches.recentMatchesList.map(eachMatch => (
+            <MatchCard eachMatch={eachMatch} key={eachMatch.id} />
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
+
+export default TeamMatches
